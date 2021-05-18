@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Notes from the APIcalypse</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/blood.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section style="text-align: left;">
+          <img src="images/four-horsemen.jpg" style="float: left; padding-right: 80px;">
+          <p>
+            <br>
+            Notes from the <span style="color: red; font-weight:
+              bold;">API</span>calypse: <br>
+            The <span style="font-weight: bold; color: lightblue;">Twitter</span> V2 API
+          </p>
+          <hr>
+          <p style="font-size: smaller;">
+            <br>
+            Ed Summers<br>
+            edsu@umd.edu<br>
+            mith.umd.edu<br>
+          </p>
+        </section>
+
+        <!--
+
+        <section>
+          <a href="https://twitter.com/evoluchico/status/1388137531552718860"><img src="images/papers.jpg" width="500"></a>
+        </section>
+
+        <section data-transition="zoom">
+          <img src="images/paper.jpg" width="500">
+        </section>
+
+        -->
+
+        <section>
+          <img src="images/pew-tweet-demographics.png" style="background-color:
+          white; padding-left: 10px; padding-right: 10px; width: 500px;"><br>
+          <div style="font-size: 20pt; padding-top: 0px;">
+            Pew Research Center, April, 2019, "Sizing Up Twitter Users". 
+          </div>
+        </section>
+
+        <section style="text-align: left;">
+          <img style="background-color: white; width: 350px; float: left; padding: 10px; margin-right: 80px;" src="images/twitter-biography.jpg"> 
+          <p class="fragment">
+            <br>
+            <b>Google Scholar</b><br>
+            <br>
+            "Twitter" in title<br>
+            2018: 61,300 papers<br>
+            <span class="fragment fade-up">2021: 108,000 papers<span>
+          </p>
+          <p class="fragment">
+            "Facebook" in title<br>
+            2021: 103,000 papers
+          </p>
+          <p class="fragment">
+          👥 2.8 Billion &gt; 330 Million<br>
+          </p>
+        </section>
+
+        <section>
+          <h1>API</h1>
+          <p style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;">
+          Application<br>
+          Programming<br>
+          Interface<br>
+          </p>
+        </section>
+
+        <section data-transition="fade">
+          <h1>URLs for <span style="color: red">Data</span></h1>
+        </section>
+
+        <section data-transition="fade" style="font-size: 32pt;">
+          <b>https://api.twitter.com/2/users/<span style="color: red">813286</span>/tweets</b>
+        </section>
+
+
+        <section>
+          <img src="images/apicalypse.png">
+        </section>
+
+        <section>
+          <img src="images/cambridge-analytica.png">
+        </section>
+
+        <section>
+          <img src="images/academic.png">
+        </section>
+
+        <section>
+          <h3> 📖 &nbsp; It's Academic &nbsp; 🔬</h3>
+          <hr>
+          <ul>
+            <li class="fragment">Research-focused employee at an academic institution</li>
+            <li class="fragment">Clearly defined research objective</li>
+            <li class="fragment">Non-commercial</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>😍 &nbsp; The Good &nbsp; 👍</h3>
+          <hr>
+          <ul>
+            <li class="fragment">No more contests for data</li>
+            <li class="fragment">Search the full archive (not just last 7 days)</li>
+            <li class="fragment">No more stream volume throttling</li>
+            <li class="fragment">Adjusting stream rules on the fly</li>
+            <li class="fragment">Collecting conversation threads</li>
+            <li class="fragment">Tweeting entities: people, places, organizations</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>💩 &nbsp; The Bad &nbsp; 👎</h3>
+          <hr>
+          <ul>
+            <li class="fragment">Premium product offerings going away</li>
+            <li class="fragment">Twitter as gate keeper of what is research</li>
+            <li class="fragment">No more canonical tweet representation</li>
+            <li class="fragment"><em>Much</em> lower quotas (slightly better for
+            academic researchers)</li>
+          </ul>
+        </section>
+
+        <section data-background-color="white">
+          <img src="images/twarc2-chart1.png" style="width: 1200px; border: 3px solid #ccc; padding: 10px;">
+        </section>
+
+        <section data-background-color="white">
+          <img src="images/twarc2-chart2.png" style="width: 1200px !important; border: 3px solid #ccc;">
+        </section>
+
+        <section style="position: relative; left: -10%; font-size: 22pt;
+          text-align: left; width: 120% !important;">
+
+            <h3>What's Canonical?</h3>
+
+            <p class="fragment">
+            <b style="color: red;">expansions:</b> author_id in_reply_to_user_id referenced_tweets.id referenced_tweets.id.author_id entities.mentions.username attachments.poll_ids attachments.media_keys geo.place_id
+            </p>
+            
+            <p class="fragment">
+            <b style="color: red;">users:</b> created_at description entities id location name pinned_tweet_id profile_image_url protected public_metrics url username verified withheld
+            </p>
+
+            <p class="fragment">
+            <b style="color: red;">tweets:</b> attachments author_id context_annotations conversation_id created_at entities geo id in_reply_to_user_id lang public_metrics text possibly_sensitive referenced_tweets reply_settings source withheld
+            </p>
+
+            <p class="fragment">
+            <b style="color: red;">media:</b> duration_ms height media_key preview_image_url type url width public_metrics
+            </p>
+
+            <p class="fragment">
+            <b style="color: red;">polls:</b> duration_minutes end_datetime id options voting_status]
+            </p>
+
+            <p class="fragment">
+            <b style="color: red;">places:</b> contained_within country country_code full_name geo id name place_type
+            </p>
+
+        </section>
+
+        <section data-background-color="white">
+          <img src="images/twarc2.png">
+          <br>
+          <p style="color: black;">
+          <b>https://github.com/docnow/twarc</b>
+          </p>
+        </section>
+
+        <section>
+          <img src="images/docnow.jpg" width="80%"><br>
+          <b>https://www.docnow.io</b>
+        </section>
+
+        <section>
+          <h3>Tools and Practices</h3>
+          <hr>
+          <ol>
+            <li><b>twarc</b>: tweet archiving utility</li>
+            <li><b>docnow</b>: appraisal application</li>
+            <li><b>catalog</b>: clearninghouse for twitter id datasets</li>
+            <li><b>hydrator</b>: desktop app for tweet id datasets</li>
+          </ol>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+    </script>
+  </body>
+</html>
